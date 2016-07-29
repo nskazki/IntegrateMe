@@ -3,7 +3,13 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format.json? }
 
-  # exception-> json
+  # unmatched_route exception -> json
+  rescue_from ActiveRecord::RecordNotFound, :with => :unmatched_route
+  def unmatched_route(exception)
+    render json: { error: exception.message }, :status => :not_found
+  end
+
+  # other exception-> json
   rescue_from StandardError do |exception|
     render json: { error: exception.message }, :status => 500
   end

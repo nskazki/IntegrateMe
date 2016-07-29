@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   resources :entries,      path: 'api/entries'
   resources :competitions, path: 'api/competitions'
 
+  # handle unmatched_route
+  get    '*unmatched_route', to: 'errors#raise_unmatched_route'
+  put    '*unmatched_route', to: 'errors#raise_unmatched_route'
+  post   '*unmatched_route', to: 'errors#raise_unmatched_route'
+  patch  '*unmatched_route', to: 'errors#raise_unmatched_route'
+  delete '*unmatched_route', to: 'errors#raise_unmatched_route'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
