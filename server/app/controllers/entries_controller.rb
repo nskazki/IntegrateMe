@@ -10,13 +10,28 @@ class EntriesController < ApplicationController
 
   # POST /entries.json
   def create
-    @entry = Entry.new(entry_params)
+    @entry_params = entry_params
+    @entry = Entry.new @entry_params
 
-    if @entry.save
-      render json: {success: true}
-    else
-      render json: {success: false, errors: @entry.errors}
+    unless @entry.valid?
+      return render json: { success: false, errors: @entry.errors }
     end
+
+    @mail_api_key = @entry.competition.mail_api_key
+    @mail_list_id = @entry.competition.mail_list_id
+    @mail_api = MailApi.new @mail_api_key
+
+    begin
+      @mail_api.add_member_to_list @mail_list_id, @entry_params[:email], @entry_params[:name]
+    rescue => e
+      @entry.process_status = 'problem'
+      @entry.save!
+      # will be handled by ApplicationController
+      raise e
+    end
+
+    @entry.save!
+    return render json: { success: true }
   end
 
   private

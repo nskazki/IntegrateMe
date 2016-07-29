@@ -9,7 +9,7 @@ class Entry < ActiveRecord::Base
   validates_presence_of :email
   validates_format_of :email, :with => EMAIL_REGEX, allow_blank: true, allow_nil: true
   validates_presence_of :name, if: :requires_name
-  validates_uniqueness_of :email, scope: :competition, message: "has already entered this competition"
+  validates :process_status, inclusion: { in: [ 'success', 'problem' ] }
 
   private
     def clean_email

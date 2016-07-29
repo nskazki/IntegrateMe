@@ -3,7 +3,7 @@ class MailApi
     @api_key = api_key
     @gibbon = Gibbon::Request.new(api_key: api_key, debug: debug)
   end
-
+  
   def check_list(list_id)
     @gibbon.lists(list_id).retrieve
     return nil
@@ -15,5 +15,17 @@ class MailApi
     else
       return "MailChimp responce: #{e.title || e}"
     end
+  end
+
+  def add_member_to_list(list_id, email, name)
+    @gibbon.lists(list_id).members.create(
+      body: {
+        email_address: email,
+        status: 'subscribed',
+        merge_fields: { FNAME: name }
+      }
+    )
+  rescue Gibbon::MailChimpError => e
+    raise "MailChimp responce: #{e.title || e}"
   end
 end
