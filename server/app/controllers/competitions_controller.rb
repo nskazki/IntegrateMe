@@ -16,7 +16,8 @@ class CompetitionsController < ApplicationController
 
   # POST /competitions.json
   def create
-    @competition = Competition.new(competition_params)
+    @competition_params = competition_params
+    @competition = Competition.new(@competition_params)
 
     if @competition.save
       render json: {success: true}
@@ -28,6 +29,6 @@ class CompetitionsController < ApplicationController
   private
   # Never trust parameters from the scary internet, only allow the white list through.
   def competition_params
-    params.require(:competition).permit(:name, :requires_entry_name)
+    params.require(:competition).permit(:name, :requires_entry_name, :owner_email, :mail_api_key, :mail_list_id)
   end
 end
