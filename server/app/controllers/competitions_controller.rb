@@ -19,11 +19,21 @@ class CompetitionsController < ApplicationController
     @competition_params = competition_params
     @competition = Competition.new(@competition_params)
 
-    if @competition.save
-      render json: {success: true}
-    else
-      render json: {success: false, errors: @competition.errors}
+    unless  @competition.valid?
+      return render json: { success: false, errors: @competition.errors }
     end
+
+    @mail_api = MailApi.new(@competition_params[:mail_api_key])
+    @check_result = @mail_api.check_list @competition_params[:mail_list_id]
+    unless @check_result .nil?
+      return render json: {
+          success: false,
+          errors: { mail_list_id: @check_result }
+      }
+    end
+
+    @competition.save!
+    return render json: { success: true }
   end
 
   private
