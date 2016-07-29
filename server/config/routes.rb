@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :entries,      path: 'api/entries'
   resources :competitions, path: 'api/competitions'
+  resources :mail_lists,   path: 'api/mail_lists'
 
   # handle unmatched_route
   get    '*unmatched_route', to: 'errors#raise_unmatched_route'

@@ -3,7 +3,14 @@ class MailApi
     @api_key = api_key
     @gibbon = Gibbon::Request.new(api_key: api_key, debug: debug)
   end
-  
+
+  def get_lists
+    @result = @gibbon.lists.retrieve(params: { fields: 'lists.id,lists.name' })
+    @result['lists']
+  rescue Gibbon::MailChimpError => e
+    raise "MailChimp responce: #{e.title || e}"
+  end
+
   def check_list(list_id)
     @gibbon.lists(list_id).retrieve
     return nil
