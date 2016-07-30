@@ -13,13 +13,15 @@
 
   "specScripts": [
     "specs/process.js",
-    "specs/competition-item.js"
+    "specs/competition-item.js",
+    "specs/competition-item.self-init.js"
   ],
 
   "karmaScripts": [
     "../node_modules/chai/chai.js",
     "../node_modules/angular-mocks/angular-mocks.js",
-    "../node_modules/sinon/pkg/sinon.js"
+    "../node_modules/sinon/pkg/sinon.js",
+    "../node_modules/lodash/lodash.js"
   ],
 
   "hostname": "localhost",
