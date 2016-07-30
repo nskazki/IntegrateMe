@@ -12,5 +12,10 @@
                ng-model="$ctrl.newItem.email">
 
         <input type="submit" value="Send!">
+
+        <app-process
+            app-process-status="$ctrl.processCtrl.status"
+            app-process-errors="$ctrl.processCtrl.errors">
+        </app-process>
     </fieldset>
 </form>
