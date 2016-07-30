@@ -20,6 +20,8 @@
 
 ## CLIENT
 
+/client/node_modules/
+/client/**/*.log
 
 ## OTHER
 
