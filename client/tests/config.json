@@ -1,0 +1,26 @@
+{
+  "preAppScripts": [
+    "../node_modules/jquery/dist/jquery.min.js"
+  ],
+
+  "appBase": "../src",
+  "appIndex": "index.html",
+
+  "specScripts": [
+    "specs/process.js"
+  ],
+
+  "karmaScripts": [
+    "../node_modules/chai/chai.js",
+    "../node_modules/angular-mocks/angular-mocks.js",
+    "../node_modules/sinon/pkg/sinon.js"
+  ],
+
+  "hostname": "localhost",
+  "port": "9876",
+
+  "pipeConsole": true,
+  "logLevel": "INFO",
+
+  "coverageDir": "./coverage"
+}
