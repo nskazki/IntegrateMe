@@ -10,10 +10,14 @@ angular
 
 CompetitionNew.$inject = [
   '$log',
-  'CompetitionsResource', 'MailListsResource']
+  'CompetitionsResource', 'MailListsResource',
+  'ProcessMixin']
 
-function CompetitionNew($log, CompetitionsResource, MailListsResource) {
+function CompetitionNew($log, CompetitionsResource,
+  MailListsResource, ProcessMixin) {
+
   var $ctrl = this
+  ProcessMixin.call($ctrl)
 
   $ctrl.$onInit = clear
   $ctrl.create = create
@@ -35,25 +39,32 @@ function CompetitionNew($log, CompetitionsResource, MailListsResource) {
 
   function syncMailLists() {
     $ctrl.mailLists = []
+    $ctrl.processCtrl.setInProcessState()
 
     return MailListsResource
       .query({ mail_api_key: $ctrl.newItem.mail_api_key })
       .$promise.then(function(mailLists) {
         $ctrl.mailLists = mailLists
+        $ctrl.processCtrl.setSuccessState()
         $log.info('CompetitionNew#syncMailLists - success')
       }, function(err) {
+        $ctrl.processCtrl.setProblemState(err)
         $log.error('CompetitionNew#syncMailLists - problem:', err)
         throw err
       })
   }
 
   function create() {
+    $ctrl.processCtrl.setInProcessState()
+
     return CompetitionsResource
       .save($ctrl.newItem)
       .$promise.then(function() {
         $ctrl.onCreate()
+        $ctrl.processCtrl.setSuccessState()
         $log.info('CompetitionNew#create - success')
       }, function(err) {
+        $ctrl.processCtrl.setProblemState(err)
         $log.error('CompetitionNew#create - problem', err)
         throw err
       })
