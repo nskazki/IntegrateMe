@@ -22,5 +22,15 @@ module IntegrateMe
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+
+    # The CORS spec allows web applications to make
+    # cross domain AJAX calls without using workarounds such as JSONP
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins ENV['CORS'] || /\Ahttps?:\/\/localhost(:\d+)?\z/
+        resource '*', :headers => :any, :methods => [:any]
+      end
+    end
   end
 end
