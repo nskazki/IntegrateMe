@@ -20,7 +20,10 @@ class CompetitionsController < ApplicationController
     @competition = Competition.new(@competition_params)
 
     unless  @competition.valid?
-      return render json: { success: false, errors: @competition.errors }
+      return render json: {
+          success: false,
+          errors: @competition.errors
+      }, :status => :bad_request
     end
 
     @mail_api = MailApi.new(@competition_params[:mail_api_key])
@@ -29,7 +32,7 @@ class CompetitionsController < ApplicationController
       return render json: {
           success: false,
           errors: { mail_list_id: @check_result }
-      }
+      }, :status => :bad_request
     end
 
     @competition.save!

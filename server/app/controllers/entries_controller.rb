@@ -14,7 +14,10 @@ class EntriesController < ApplicationController
     @entry = Entry.new @entry_params
 
     unless @entry.valid?
-      return render json: { success: false, errors: @entry.errors }
+      return render json: {
+          success: false,
+          errors: @entry.errors
+      }, :status => :bad_request
     end
 
     @mail_api_key = @entry.competition.mail_api_key

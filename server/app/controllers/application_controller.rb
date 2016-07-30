@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   # unmatched_route exception -> json
   rescue_from ActiveRecord::RecordNotFound, :with => :unmatched_route
   def unmatched_route(exception)
-    render json: { error: exception.message }, :status => :not_found
+    render json: { success: false, error: exception.message }, :status => :not_found
   end
 
   # other exception-> json
   rescue_from StandardError do |exception|
-    render json: { error: exception.message }, :status => 500
+    render json: { success: false, error: exception.message }, :status => :internal_server_error
   end
 end
