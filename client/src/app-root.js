@@ -4,6 +4,7 @@ angular
   .module('app', [
     'ngComponentRouter',
     'angular-loading-bar', 'ngAnimate',
+    'app.config',
     'app.resources',
     'app.process',
     'app.competitions',
@@ -15,9 +16,6 @@ angular
   .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
     cfpLoadingBarProvider.includeSpinner = false
   }])
-  .constant('config', {
-    apiUrl: 'http://localhost:3000'
-  })
   .component('appRoot', {
     templateUrl: 'app-root.html',
     $routeConfig: [{
