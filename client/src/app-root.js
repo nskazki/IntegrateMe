@@ -3,13 +3,17 @@
 angular
   .module('app', [
     'ngComponentRouter',
+    'angular-loading-bar', 'ngAnimate',
     'app.resources',
     'app.competitions',
     'app.entries'
   ])
-  .config(function($locationProvider) {
-    $locationProvider.html5Mode(true);
-  })
+  .config(['$locationProvider', function($locationProvider) {
+    $locationProvider.html5Mode(true)
+  }])
+  .config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+    cfpLoadingBarProvider.includeSpinner = false
+  }])
   .constant('config', {
     apiUrl: 'http://localhost:3000'
   })
