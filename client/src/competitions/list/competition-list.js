@@ -14,6 +14,7 @@ function CompetitionList($log, CompetitionsResource) {
 
   $ctrl.list = []
   $ctrl.$onInit = init
+  $ctrl.update = init
 
   function init() {
     return CompetitionsResource

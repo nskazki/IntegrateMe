@@ -1,0 +1,41 @@
+<form ng-submit="$ctrl.create()">
+    <fieldset>
+        <legend>
+            <a ng-link="['CompetitionNew']">
+                New Competition
+            </a>
+        </legend>
+
+        <label for="name">Name:</label>
+        <input id="name" required
+               ng-model="$ctrl.newItem.name">
+
+        <label for="owner_email">Owner Email:</label>
+        <input id="owner_email" required type="email"
+               ng-model="$ctrl.newItem.owner_email">
+
+        <label for="requires_entry_name">Requires Entry Name:</label>
+        <input id="requires_entry_name" type="checkbox"
+               ng-model="$ctrl.newItem.requires_entry_name">
+
+        <br>
+        <label for="mail_api_key">Mail API Key:</label>
+        <input id="mail_api_key" required
+               placeholder="Enter API Key and do Sync!"
+               ng-model="$ctrl.newItem.mail_api_key">
+        <input type="button" id="sync"
+               value="Sync Mail Lists!"
+               ng-click="$ctrl.syncMailLists()">
+
+        <br>
+        <label for="mail_list_id">Mail List Name:</label>
+        <select id="mail_list_id" required
+                ng-disabled="!$ctrl.mailLists || !$ctrl.mailLists.length"
+                ng-model="$ctrl.newItem.mail_list_id"
+                ng-options="list.id as list.name for list in $ctrl.mailLists">
+            <option value="" disabled></option>
+        </select>
+
+        <input type="submit" value="Create!">
+    </fieldset>
+</form>

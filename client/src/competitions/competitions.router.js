@@ -9,7 +9,11 @@ angular
       name: 'CompetitionList',
       component: 'appCompetitionList',
       useAsDefault: true
-    },{
+    }, {
+      path: '/new',
+      name: 'CompetitionNew',
+      component: 'appCompetitionNew'
+    }, {
       path: '/:id',
       name: 'CompetitionItem',
       component: 'appCompetitionItem'
