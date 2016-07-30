@@ -59,8 +59,13 @@ const karmaScripts = resolveScripts(
   dirResolve,
   'karmaScripts')
 
-// specScripts
+// mockScripts
+const mockScripts = resolveScripts(
+  mainConfig.mockScripts,
+  dirResolve,
+  'mockScripts')
 
+// specScripts
 const specScripts = resolveScripts(
   mainConfig.specScripts,
   dirResolve,
@@ -69,7 +74,7 @@ const specScripts = resolveScripts(
 // all scripts
 const allScripts = flatten([
   preAppScripts, appScripts,
-  karmaScripts, specScripts ])
+  karmaScripts, mockScripts, specScripts ])
 
 // exports
 module.exports = function(config) {

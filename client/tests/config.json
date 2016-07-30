@@ -1,13 +1,19 @@
 {
   "preAppScripts": [
-    "../node_modules/jquery/dist/jquery.min.js"
+    "../node_modules/jquery/dist/jquery.min.js",
+    "../node_modules/es6-shim/es6-shim.js"
   ],
 
   "appBase": "../src",
   "appIndex": "index.html",
 
+  "mockScripts": [
+    "mocks/competition-router.js"
+  ],
+
   "specScripts": [
-    "specs/process.js"
+    "specs/process.js",
+    "specs/competition-item.js"
   ],
 
   "karmaScripts": [
