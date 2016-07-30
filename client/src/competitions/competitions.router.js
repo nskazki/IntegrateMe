@@ -17,5 +17,9 @@ angular
       path: '/:id',
       name: 'CompetitionItem',
       component: 'appCompetitionItem'
+    }, {
+      path: '/:id/with-new-entry',
+      name: 'CompetitionItemWithNewEntry',
+      component: 'appCompetitionItemWithNewEntry'
     }]
   })

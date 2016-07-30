@@ -7,6 +7,11 @@ angular
     controller: CompetitionItem,
     bindings: { appItem: '<?' }
   })
+  .component('appCompetitionItemWithNewEntry', {
+    templateUrl: 'competitions/item/competition-item-with-new-entry.html',
+    controller: CompetitionItem,
+    bindings: { appItem: '<?' }
+  })
 
 CompetitionItem.$inject = ['$log', 'CompetitionsResource']
 

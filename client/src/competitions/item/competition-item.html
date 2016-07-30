@@ -17,5 +17,9 @@
         <label for="requires_entry_name">Requires Entry Name:</label>
         <input disabled id="requires_entry_name" type="checkbox"
                ng-model="$ctrl.appItem.requires_entry_name">
+
+        <a ng-link="['CompetitionItemWithNewEntry', { id: $ctrl.appItem.id }]">
+            Join!
+        </a>
     </fieldset>
 </form>
