@@ -15,7 +15,8 @@
     "specs/process.js",
     "specs/competition-item.js",
     "specs/competition-item.self-init.js",
-    "specs/competition-new.js"
+    "specs/competition-new.js",
+    "specs/competition-list.js"
   ],
 
   "karmaScripts": [
