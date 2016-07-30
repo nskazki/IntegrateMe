@@ -1,0 +1,16 @@
+<form ng-submit="$ctrl.create()">
+    <fieldset>
+        <legend>New Entry</legend>
+
+        <label for="name">Name:</label>
+        <input id="name" required
+               ng-model="$ctrl.newItem.name"
+               ng-disabled="!$ctrl.appRequiresEntryName">
+
+        <label for="email">Email:</label>
+        <input id="email" required type="email"
+               ng-model="$ctrl.newItem.email">
+
+        <input type="submit" value="Send!">
+    </fieldset>
+</form>

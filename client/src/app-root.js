@@ -4,7 +4,8 @@ angular
   .module('app', [
     'ngComponentRouter',
     'app.resources',
-    'app.competitions'
+    'app.competitions',
+    'app.entries'
   ])
   .config(function($locationProvider) {
     $locationProvider.html5Mode(true);
