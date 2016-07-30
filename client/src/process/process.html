@@ -1,0 +1,12 @@
+<!-- appProcessStatus  -->
+<p ng-if="$ctrl.appProcessStatus"
+   ng-bind="$ctrl.appProcessStatus"></p>
+<!-- appProcessErrors -->
+<p ng-if="$ctrl.appProcessErrors.length === 1"
+   ng-bind="$ctrl.appProcessErrors[0]">
+</p>
+<ul ng-if="$ctrl.appProcessErrors.length > 1">
+    <li ng-repeat="error in $ctrl.appProcessErrors">
+        <p ng-bind="error"></p>
+    </li>
+</ul>

@@ -5,6 +5,7 @@ angular
     'ngComponentRouter',
     'angular-loading-bar', 'ngAnimate',
     'app.resources',
+    'app.process',
     'app.competitions',
     'app.entries'
   ])
