@@ -1,0 +1,21 @@
+<form>
+    <fieldset>
+        <legend>
+            <a ng-link="['CompetitionItem', { id: $ctrl.appItem.id }]"
+               ng-bind="$ctrl.getTitle()">
+            </a>
+        </legend>
+
+        <label for="name">Name:</label>
+        <input disabled id="name"
+               ng-model="$ctrl.appItem.name">
+
+        <label for="owner_email">Owner Email:</label>
+        <input disabled id="owner_email"
+               ng-model="$ctrl.appItem.owner_email">
+
+        <label for="requires_entry_name">Requires Entry Name:</label>
+        <input disabled id="requires_entry_name" type="checkbox"
+               ng-model="$ctrl.appItem.requires_entry_name">
+    </fieldset>
+</form>
