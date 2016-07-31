@@ -4,6 +4,7 @@ describe('competition-item.self-init', function() {
   beforeEach(module('ngComponentRouter'))
   beforeEach(module('app.config'))
   beforeEach(module('app.resources'))
+  beforeEach(module('app.process'))
   beforeEach(module('app.competitions'))
 
   beforeEach(module('templates'))

@@ -21,5 +21,10 @@
         <a ng-link="['CompetitionItemWithNewEntry', { id: $ctrl.appItem.id }]">
             Join!
         </a>
+
+        <app-process
+            app-process-status="$ctrl.processCtrl.status"
+            app-process-errors="$ctrl.processCtrl.errors">
+        </app-process>
     </fieldset>
 </form>

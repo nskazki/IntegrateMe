@@ -13,10 +13,12 @@ angular
     bindings: { appItem: '<?' }
   })
 
-CompetitionItem.$inject = ['$log', 'CompetitionsResource']
+CompetitionItem.$inject = ['$log',
+  'CompetitionsResource', 'ProcessMixin']
 
-function CompetitionItem($log, CompetitionsResource) {
+function CompetitionItem($log, CompetitionsResource, ProcessMixin) {
   var $ctrl = this
+  ProcessMixin.call(this)
 
   $ctrl.$routerOnActivate = fetch
   $ctrl.getTitle = getTitle
@@ -28,6 +30,7 @@ function CompetitionItem($log, CompetitionsResource) {
         $ctrl.appItem = res
         $log.info('CompetitionItem#fetch - success')
       }, function(err) {
+        $ctrl.processCtrl.setProblemState(err)
         $log.error('CompetitionItem#fetch - problem: ', err)
         throw err
       })

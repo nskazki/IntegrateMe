@@ -7,10 +7,12 @@ angular
     controller: CompetitionList
   })
 
-CompetitionList.$inject = ['$log', 'CompetitionsResource']
+CompetitionList.$inject = ['$log',
+  'CompetitionsResource', 'ProcessMixin']
 
-function CompetitionList($log, CompetitionsResource) {
+function CompetitionList($log, CompetitionsResource, ProcessMixin) {
   var $ctrl = this
+  ProcessMixin.call(this)
 
   $ctrl.list = []
   $ctrl.$onInit = init
@@ -23,6 +25,7 @@ function CompetitionList($log, CompetitionsResource) {
         $ctrl.list = list
         $log.info('CompetitionList#init - success')
       }, function(err) {
+        $ctrl.processCtrl.setProblemState(err)
         $log.error('CompetitionList#init - problem: ', err)
         throw err
       })
