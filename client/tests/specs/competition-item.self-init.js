@@ -47,8 +47,8 @@ describe('competition-item.self-init', function() {
   }))
 
   afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
+    $httpBackend.verifyNoOutstandingExpectation()
+    $httpBackend.verifyNoOutstandingRequest()
   })
 
   it('must be empty by default', function() {

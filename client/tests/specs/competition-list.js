@@ -39,8 +39,8 @@ describe('competition-list', function() {
   }))
 
   afterEach(function() {
-    $httpBackend.verifyNoOutstandingExpectation();
-    $httpBackend.verifyNoOutstandingRequest();
+    $httpBackend.verifyNoOutstandingExpectation()
+    $httpBackend.verifyNoOutstandingRequest()
   })
 
   beforeEach(inject(function($rootScope, $compile) {
@@ -64,7 +64,7 @@ describe('competition-list', function() {
 
     // check new state
     var itemKeys = [ 'id', 'name', 'owner_email', 'requires_entry_name' ]
-    var itemCleaner = _.partial(_.pick, _, itemCleaner)
+    var itemCleaner = _.partial(_.pick, _, itemKeys)
     var actItems = cmpScope.$ctrl.list.map(itemCleaner)
     var expItems = baseItems.map(itemCleaner)
     assert.deepEqual(actItems, expItems, 'must be defined')
@@ -87,7 +87,7 @@ describe('competition-list', function() {
 
     // check new state
     var itemKeys = [ 'id', 'name', 'owner_email', 'requires_entry_name' ]
-    var itemCleaner = _.partial(_.pick, _, itemCleaner)
+    var itemCleaner = _.partial(_.pick, _, itemKeys)
     var actItems = cmpScope.$ctrl.list.map(itemCleaner)
     var expItems = baseItems.map(itemCleaner)
     assert.deepEqual(actItems, expItems, 'must be defined')

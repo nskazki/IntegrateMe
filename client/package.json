@@ -2,9 +2,10 @@
   "name": "integrate-me-client",
   "private": true,
   "scripts": {
-    "test": "npm run karma && npm run lcov-summary",
+    "test": "npm run eslint && npm run karma && npm run lcov-summary",
     "start": "npm run lite-server",
     "karma": "karma start tests/karma.runner.js",
+    "eslint": "eslint src tests/specs/ tests/mocks/ tests/karma.runner.js",
     "lcov-summary": "lcov-summary tests/coverage/lcov.info",
     "lite-server": "lite-server -c lite-server.json"
   },
@@ -18,10 +19,12 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
+    "babel-eslint": "^6.1.2",
     "chai": "^3.5.0",
     "cheerio": "^0.20.0",
     "debug": "^2.2.0",
     "es6-shim": "^0.35.1",
+    "eslint": "^3.2.0",
     "jquery": "^3.1.0",
     "karma": "^1.1.2",
     "karma-coverage": "^1.1.1",
