@@ -6,6 +6,7 @@ angular
     templateUrl: 'process/process.html',
     bindings: {
       appProcessStatus: '<',
-      appProcessErrors: '<'
+      appProcessErrors: '<',
+      appProcessState: '<'
     }
   })

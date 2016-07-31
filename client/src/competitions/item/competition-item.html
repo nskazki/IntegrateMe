@@ -59,10 +59,11 @@
       </div>
     </div>
 
-        <app-process
-            app-process-status="$ctrl.processCtrl.status"
-            app-process-errors="$ctrl.processCtrl.errors">
-        </app-process>
     <!-- Process Indicator -->
+    <app-process
+      app-process-status="$ctrl.processCtrl.status"
+      app-process-errors="$ctrl.processCtrl.errors"
+      app-process-state="$ctrl.processCtrl.state">
+    </app-process>
   </div>
 </form>
