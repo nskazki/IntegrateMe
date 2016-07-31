@@ -39,7 +39,7 @@ class MailApi
       body: {
         email_address: email,
         status: 'subscribed',
-        merge_fields: { FNAME: name }
+        merge_fields: { FNAME: name || '' }
       }
     )
   rescue => e
