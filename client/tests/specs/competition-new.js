@@ -27,7 +27,7 @@ describe('competition-new', function() {
   var emptyItem = {
     name: undefined,
     owner_email: undefined,
-    requires_entry_name: undefined,
+    requires_entry_name: true,
     mail_api_key: undefined,
     mail_list_id: undefined
   }
