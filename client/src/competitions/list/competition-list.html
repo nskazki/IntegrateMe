@@ -1,14 +1,18 @@
-<app-competition-new
-    on-create="$ctrl.update()">
-</app-competition-new>
+<div class="row">
+  <app-competition-new
+      on-create="$ctrl.update()">
+  </app-competition-new>
+</div>
 
-<app-competition-item
-    ng-repeat="item in $ctrl.list"
-    app-item="item"
->
-</app-competition-item>
+<div class="row">
+  <app-competition-item
+      ng-repeat="item in $ctrl.list"
+      app-item="item"
+  >
+  </app-competition-item>
 
 <app-process
     app-process-status="$ctrl.processCtrl.status"
     app-process-errors="$ctrl.processCtrl.errors">
 </app-process>
+</div>

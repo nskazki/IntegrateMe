@@ -1,21 +1,47 @@
-<form ng-submit="$ctrl.create()">
-    <fieldset>
-        <legend>New Entry</legend>
+<form class="form-horizontal col-sm-6"
+      ng-submit="$ctrl.create()">
+  <!-- Form Title -->
+  <legend>New Entry</legend>
 
-        <label for="name">Name:</label>
-        <input id="name" required
-               ng-model="$ctrl.newItem.name"
-               ng-disabled="!$ctrl.appRequiresEntryName">
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name"
+           class="col-sm-3 control-label">
+      Name:
+    </label>
+    <div class="col-sm-8">
+      <input id="name" required autofocus
+             class="form-control"
+             ng-model="$ctrl.newItem.name"
+             ng-disabled="!$ctrl.appRequiresEntryName">
+    </div>
+  </div>
 
-        <label for="email">Email:</label>
-        <input id="email" required type="email"
-               ng-model="$ctrl.newItem.email">
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email"
+           class="col-sm-3 control-label">
+      Email:
+    </label>
+    <div class="col-sm-8">
+      <input id="email" required type="email"
+             class="form-control"
+             ng-model="$ctrl.newItem.email">
+    </div>
+  </div>
 
-        <input type="submit" value="Send!">
+  <!-- Send! -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <button type="submit" class="btn btn-success">
+        Send!
+      </button>
+    </div>
+  </div>
 
         <app-process
             app-process-status="$ctrl.processCtrl.status"
             app-process-errors="$ctrl.processCtrl.errors">
         </app-process>
-    </fieldset>
+  <!-- Process Indicator -->
 </form>

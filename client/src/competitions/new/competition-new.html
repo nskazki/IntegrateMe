@@ -1,46 +1,104 @@
-<form ng-submit="$ctrl.create()">
-    <fieldset>
-        <legend>
-            <a ng-link="['CompetitionNew']">
-                New Competition
-            </a>
-        </legend>
+<form class="form-horizontal col-sm-6"
+      ng-submit="$ctrl.create()">
 
-        <label for="name">Name:</label>
-        <input id="name" required
-               ng-model="$ctrl.newItem.name">
+  <!-- Direct Link -->
+  <legend>
+    <a ng-link="['CompetitionNew']">
+      New Competition
+    </a>
+  </legend>
 
-        <label for="owner_email">Owner Email:</label>
-        <input id="owner_email" required type="email"
-               ng-model="$ctrl.newItem.owner_email">
+  <!-- Name -->
+  <div class="form-group">
+    <label for="name"
+           class="col-sm-3 control-label">
+      Name:
+    </label>
+    <div class="col-sm-8">
+      <input id="name" required autofocus
+             class="form-control"
+             ng-model="$ctrl.newItem.name">
+    </div>
+  </div>
 
-        <label for="requires_entry_name">Requires Entry Name:</label>
-        <input id="requires_entry_name" type="checkbox"
-               ng-model="$ctrl.newItem.requires_entry_name">
+  <!-- Owner Email -->
+  <div class="form-group">
+    <label for="owner_email"
+           class="col-sm-3 control-label">
+      Owner Email:
+    </label>
+    <div class="col-sm-8">
+      <input id="owner_email" required type="email"
+             class="form-control"
+             ng-model="$ctrl.newItem.owner_email">
+    </div>
+  </div>
 
-        <br>
-        <label for="mail_api_key">Mail API Key:</label>
+  <!-- Requires Entry Name -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <div class="checkbox">
+        <label>
+          <input id="requires_entry_name" type="checkbox"
+                 ng-model="$ctrl.newItem.requires_entry_name">
+          Requires Entry Name
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mail API Key & Sync Mail Lists! -->
+  <div class="form-group">
+    <label for="mail_api_key"
+           class="col-sm-3 control-label">
+      Mail API Key:
+    </label>
+    <div class="col-sm-8">
+      <div class="input-group">
         <input id="mail_api_key" required
+               class="form-control"
                placeholder="Enter API Key and do Sync!"
                ng-model="$ctrl.newItem.mail_api_key">
-        <input type="button" id="sync"
-               value="Sync Mail Lists!"
-               ng-click="$ctrl.syncMailLists()">
+        <span class="input-group-btn">
+          <button class="btn btn-info"
+                  type="button"
+                  ng-click="$ctrl.syncMailLists()">
+            Sync Mail Lists!
+          </button>
+        </span>
+      </div>
+    </div>
+  </div>
 
-        <br>
-        <label for="mail_list_id">Mail List Name:</label>
-        <select id="mail_list_id" required
-                ng-disabled="!$ctrl.mailLists || !$ctrl.mailLists.length"
-                ng-model="$ctrl.newItem.mail_list_id"
-                ng-options="list.id as list.name for list in $ctrl.mailLists">
-            <option value="" disabled></option>
-        </select>
+  <!-- Mail List Name -->
+  <div class="form-group">
+    <label for="mail_list_id"
+           class="col-sm-3 control-label">
+      Mail List Name:
+    </label>
+    <div class="col-sm-8">
+      <select id="mail_list_id" required
+              class="form-control"
+              ng-disabled="!$ctrl.mailLists || !$ctrl.mailLists.length"
+              ng-model="$ctrl.newItem.mail_list_id"
+              ng-options="list.id as list.name for list in $ctrl.mailLists">
+        <option value="" disabled></option>
+      </select>
+    </div>
+  </div>
 
-        <input type="submit" value="Create!">
+  <!-- Create! -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <button type="submit" class="btn btn-success">
+        Create!
+      </button>
+    </div>
+  </div>
 
         <app-process
                 app-process-status="$ctrl.processCtrl.status"
                 app-process-errors="$ctrl.processCtrl.errors">
         </app-process>
-    </fieldset>
+  <!-- Process Indicator -->
 </form>
