@@ -17,11 +17,10 @@ function CompetitionNew($log, CompetitionsResource,
   MailListsResource, ProcessMixin) {
 
   var $ctrl = this
-  ProcessMixin.call($ctrl)
 
   $ctrl.$onInit = clear
-  $ctrl.create = create
-  $ctrl.syncMailLists = syncMailLists
+  $ctrl.create = ProcessMixin.call(create)
+  $ctrl.syncMailLists = ProcessMixin.call(syncMailLists)
 
   function clear() {
     $ctrl.mailLists = []
@@ -39,32 +38,32 @@ function CompetitionNew($log, CompetitionsResource,
 
   function syncMailLists() {
     $ctrl.mailLists = []
-    $ctrl.processCtrl.setInProcessState()
+    $ctrl.syncMailLists.processCtrl.setInProcessState()
 
     return MailListsResource
       .query({ mail_api_key: $ctrl.newItem.mail_api_key })
       .$promise.then(function(mailLists) {
         $ctrl.mailLists = mailLists
-        $ctrl.processCtrl.setSuccessState()
+        $ctrl.syncMailLists.processCtrl.setSuccessState()
         $log.info('CompetitionNew#syncMailLists - success')
       }, function(err) {
-        $ctrl.processCtrl.setProblemState(err)
+        $ctrl.syncMailLists.processCtrl.setProblemState(err)
         $log.error('CompetitionNew#syncMailLists - problem:', err)
         throw err
       })
   }
 
   function create() {
-    $ctrl.processCtrl.setInProcessState()
+    $ctrl.create.processCtrl.setInProcessState()
 
     return CompetitionsResource
       .save($ctrl.newItem)
       .$promise.then(function() {
         $ctrl.onCreate()
-        $ctrl.processCtrl.setSuccessState()
+        $ctrl.create.processCtrl.setSuccessState()
         $log.info('CompetitionNew#create - success')
       }, function(err) {
-        $ctrl.processCtrl.setProblemState(err)
+        $ctrl.create.processCtrl.setProblemState(err)
         $log.error('CompetitionNew#create - problem', err)
         throw err
       })

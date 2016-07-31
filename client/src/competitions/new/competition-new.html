@@ -70,6 +70,17 @@
     </div>
   </div>
 
+  <!-- Sync Process Indicator -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-8">
+      <app-process
+        app-process-status="$ctrl.syncMailLists.processCtrl.status"
+        app-process-errors="$ctrl.syncMailLists.processCtrl.errors"
+        app-process-state="$ctrl.syncMailLists.processCtrl.state">
+      </app-process>
+    </div>
+  </div>
+
   <!-- Mail List Name -->
   <div class="form-group">
     <label for="mail_list_id"
@@ -96,13 +107,13 @@
     </div>
   </div>
 
-  <!-- Process Indicator -->
+  <!-- Create Process Indicator -->
   <div class="form-group">
     <div class="col-sm-offset-3 col-sm-8">
       <app-process
-        app-process-status="$ctrl.processCtrl.status"
-        app-process-errors="$ctrl.processCtrl.errors"
-        app-process-state="$ctrl.processCtrl.state">
+        app-process-status="$ctrl.create.processCtrl.status"
+        app-process-errors="$ctrl.create.processCtrl.errors"
+        app-process-state="$ctrl.create.processCtrl.state">
       </app-process>
     </div>
   </div>
