@@ -129,7 +129,7 @@ module.exports = function(config) {
     reporters: [ 'coverage', 'mocha' ],
     // https://github.com/karma-runner/karma-coverage/blob/master/docs/configuration.md
     coverageReporter: {
-      type: 'html',
+      type: 'lcov',
       dir: coverageDir,
       subdir: '.'
     },
