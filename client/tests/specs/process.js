@@ -17,7 +17,8 @@ describe('process', function() {
     var tmpElmt = angular.element(
         '<app-process'
         + ' app-process-status="$ctrl.processCtrl.status"'
-        + ' app-process-errors="$ctrl.processCtrl.errors">'
+        + ' app-process-errors="$ctrl.processCtrl.errors"'
+        + ' app-process-state="$ctrl.processCtrl.state">'
       + '</app-process>')
 
     cmpElement = $compile(tmpElmt)(ownScope)
